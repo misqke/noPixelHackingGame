@@ -84,9 +84,9 @@ const generatePuzzle = (numPieces) => {
 
   const question1 = Object.keys(QUESTIONS)[questionIndex1];
   const question2 = Object.keys(QUESTIONS)[questionIndex2];
-  const question = `${question1.toUpperCase()} (${
+  const question = `${question1.toUpperCase()} ( ${
     randomPiece1.displayNum
-  }) AND ${question2.toUpperCase()} (${randomPiece2.displayNum})`;
+  } ) AND ${question2.toUpperCase()} ( ${randomPiece2.displayNum} )`;
 
   // get answers
   const answer1 = QUESTIONS[question1](randomPiece1);

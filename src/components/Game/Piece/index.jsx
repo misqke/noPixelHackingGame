@@ -1,9 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { PieceContainer, Canvas, PieceNumber } from "./styles";
 
-const SIZE = 225;
-
-const Piece = ({ piece, active }) => {
+const Piece = ({ piece, active, SIZE }) => {
   const canvasRef = useRef();
 
   useEffect(() => {
@@ -41,7 +39,7 @@ const Piece = ({ piece, active }) => {
     ctx.textBaseline = "middle";
     ctx.strokeStyle = "#000";
     ctx.strokeWidth = "5px";
-    ctx.font = "800 30px sans-serif";
+    ctx.font = `700 ${SIZE / 6.5}px sans-serif`;
     ctx.fillStyle = piece.colorText.color.code;
     ctx.strokeText(piece.colorText.text.toUpperCase(), SIZE / 2, SIZE * 0.32);
     ctx.fillText(piece.colorText.text.toUpperCase(), SIZE / 2, SIZE * 0.32);
@@ -51,16 +49,16 @@ const Piece = ({ piece, active }) => {
     ctx.fillText(piece.shapeText.text.toUpperCase(), SIZE / 2, SIZE * 0.68);
 
     ctx.fillStyle = piece.number.color.code;
-    ctx.font = "500 80px sans-serif";
+    ctx.font = `500 ${SIZE / 3}px sans-serif`;
     ctx.strokeText(piece.number.text, SIZE / 2, SIZE / 2);
     ctx.fillText(piece.number.text, SIZE / 2, SIZE / 2);
-  }, [piece]);
+  }, [piece, SIZE]);
 
   return (
-    <PieceContainer active={active}>
+    <PieceContainer size={SIZE} active={active}>
       <Canvas ref={canvasRef} active={active} />
 
-      <PieceNumber>{piece.displayNum}</PieceNumber>
+      {active === false && <PieceNumber>{piece.displayNum}</PieceNumber>}
     </PieceContainer>
   );
 };

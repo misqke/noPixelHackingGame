@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Page, Home, GameBoard } from "./components";
 
 const App = () => {
-  const [playMode, setPlayMode] = useState(true);
+  const [playMode, setPlayMode] = useState(false);
   const [timeLimit, setTimeLimit] = useState(15);
   const [numPieces, setNumPieces] = useState(4);
   const [numRounds, setNumRounds] = useState(5);
@@ -24,9 +24,9 @@ const App = () => {
         <Home start={startGame} />
       ) : (
         <GameBoard
-          timeLimit={timeLimit}
-          numPieces={numPieces}
-          numRounds={numRounds}
+          timeLimit={Number(timeLimit)}
+          numPieces={Number(numPieces)}
+          numRounds={Number(numRounds)}
           end={endGame}
         />
       )}

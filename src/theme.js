@@ -11,6 +11,7 @@ const theme = {
   },
   dark: "#050505",
   gray: "#20242e",
+  lgray: "#50547e",
 };
 
 export default theme;

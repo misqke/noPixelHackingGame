@@ -10,8 +10,8 @@ const shrink = keyframes`
 `;
 
 export const PieceContainer = styled.div`
-  width: 225px;
-  height: 225px;
+  width: ${(props) => props.size}px;
+  height: ${(props) => props.size}px;
   position: relative;
   justify-content: center;
   align-items: center;
