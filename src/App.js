@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Page, Home, GameBoard } from "./components";
 
-function App() {
+const App = () => {
+  const [playMode, setPlayMode] = useState(false);
+  const [timeLimit, setTimeLimit] = useState(15);
+  const [numPieces, setNumPieces] = useState(4);
+  const [numRounds, setNumRounds] = useState(5);
+
+  const startGame = (time, pieces, rounds) => {
+    setTimeLimit(time);
+    setNumPieces(pieces);
+    setNumRounds(rounds);
+    setPlayMode(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Page className="App">
+      {!playMode ? (
+        <Home start={startGame} />
+      ) : (
+        <GameBoard
+          timeLimit={timeLimit}
+          numPieces={numPieces}
+          numRounds={numRounds}
+        />
+      )}
+    </Page>
   );
-}
+};
 
 export default App;
