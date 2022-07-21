@@ -9,6 +9,8 @@ const theme = {
     "green": "#4cae4f",
     "purple": "#9926ac",
   },
+  dark: "#050505",
+  gray: "#20242e",
 };
 
 export default theme;

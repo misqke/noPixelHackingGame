@@ -10,6 +10,8 @@ const Page = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
 `;
 
 export { GlobalStyles, Page, Home, GameBoard };

@@ -13,7 +13,7 @@ const Home = ({ start }) => {
         <RangeSelector
           id="time"
           type="range"
-          min={7}
+          min={5}
           max={30}
           value={timeLimit}
           onChange={(e) => setTimeLimit(e.target.value)}
