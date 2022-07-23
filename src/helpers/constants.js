@@ -104,3 +104,17 @@ export const samplePuzzlePieces = [
     },
   },
 ];
+
+export const playclock = () => {
+  const clock = new Audio();
+  clock.src = "/clock.mp3";
+  clock.volume = 0.5;
+  return clock;
+};
+
+export const playDialUp = () => {
+  const dial = new Audio();
+  dial.src = "/dialup.mp3";
+  dial.volume = 0.5;
+  return dial;
+};

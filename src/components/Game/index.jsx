@@ -18,7 +18,7 @@ import Piece from "./Piece";
 import { TiCancel } from "react-icons/ti";
 import { GiSpy } from "react-icons/gi";
 
-const GameBoard = ({ timeLimit, numPieces, numRounds, end }) => {
+const GameBoard = ({ timeLimit, numPieces, numRounds, end, clock, dialUp }) => {
   const guessRef = useRef(null);
   const [loading, setLoading] = useState("Establishing Connection...");
   const [gameOver, setGameOver] = useState(false);
@@ -47,6 +47,7 @@ const GameBoard = ({ timeLimit, numPieces, numRounds, end }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     clearInterval(timerId);
+    clock.pause();
     if (guess.toLowerCase() !== currentPuzzle.answer) {
       setGameOver(true);
       setGameOverMessage(`You guessed: ${guess}`);
@@ -71,7 +72,8 @@ const GameBoard = ({ timeLimit, numPieces, numRounds, end }) => {
   }, [numPieces]);
 
   useEffect(() => {
-    if (loading === "Establishing Connection...")
+    if (loading === "Establishing Connection...") {
+      dialUp.play();
       setTimeout(() => {
         setLoading("Doing some hackerman stuff...");
         setTimeout(() => {
@@ -81,15 +83,17 @@ const GameBoard = ({ timeLimit, numPieces, numRounds, end }) => {
           }, 1500);
         }, 1000);
       }, 1000);
-  }, [loading]);
+    }
+  }, [loading, dialUp]);
 
   useEffect(() => {
     if (loading === "" && !roundActive) {
       setTimeout(() => {
         setRoundActive(true);
+        clock.play();
       }, 2500);
     }
-  }, [loading, roundActive]);
+  }, [loading, roundActive, clock]);
 
   useEffect(() => {
     const guessInput = guessRef.current;
@@ -107,8 +111,9 @@ const GameBoard = ({ timeLimit, numPieces, numRounds, end }) => {
       setGameOver(true);
       setGameOverMessage("Time ran out!");
       clearInterval(timerId);
+      clock.pause();
     }
-  }, [timer, timerId]);
+  }, [timer, timerId, clock]);
 
   return (
     <PlayArea>
