@@ -47,7 +47,7 @@ const GameBoard = ({ timeLimit, numPieces, numRounds, end }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     clearInterval(timerId);
-    if (guess !== currentPuzzle.answer) {
+    if (guess.toLowerCase() !== currentPuzzle.answer) {
       setGameOver(true);
       setGameOverMessage(`You guessed: ${guess}`);
       return;

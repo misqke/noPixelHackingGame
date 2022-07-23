@@ -6,12 +6,19 @@ import {
   RangeSelector,
   PlayBtn,
   Title,
+  ButtonBox,
 } from "./styles";
+import Instructions from "./Instructions";
 
 const Home = ({ start }) => {
   const [timeLimit, setTimeLimit] = useState(15);
   const [numPieces, setNumPieces] = useState(4);
   const [numRounds, setNumRounds] = useState(5);
+  const [showInstructions, setShowInstructions] = useState(false);
+
+  const closeInstructions = () => {
+    setShowInstructions(false);
+  };
 
   return (
     <HomePage>
@@ -54,12 +61,16 @@ const Home = ({ start }) => {
           <p>{numRounds} rounds</p>
         </FormControl>
       </Form>
-      <PlayBtn
-        type="button"
-        onClick={() => start(timeLimit, numPieces, numRounds)}
-      >
-        Play Game
-      </PlayBtn>
+      <ButtonBox>
+        <PlayBtn
+          type="button"
+          onClick={() => start(timeLimit, numPieces, numRounds)}
+        >
+          Play Game
+        </PlayBtn>
+        <PlayBtn onClick={() => setShowInstructions(true)}>How to play</PlayBtn>
+      </ButtonBox>
+      {showInstructions === true && <Instructions close={closeInstructions} />}
     </HomePage>
   );
 };

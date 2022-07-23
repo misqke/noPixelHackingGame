@@ -4,9 +4,11 @@ export const HomePage = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  width: 100%;
   align-items: center;
   justify-content: space-evenly;
   gap: 1rem;
+  position: relative;
 `;
 
 export const Form = styled.div`
@@ -38,6 +40,14 @@ export const PlayBtn = styled.button`
   &:hover {
     background: ${({ theme }) => theme.gray};
   }
+`;
+
+export const ButtonBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 `;
 
 export const Title = styled.h1`
