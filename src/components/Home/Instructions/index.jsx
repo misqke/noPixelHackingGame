@@ -38,7 +38,7 @@ const Instructions = ({ close }) => {
         <InstructionsText>
           Squares will show up displaying the number assigned to each box. After
           a few seconds the boxs will change, the timer will start, and you will
-          be asked two questions about the puzzle.
+          be asked two questions, each about a specific number piece.
         </InstructionsText>
       </InstructionCol>
       <InstructionCol>
@@ -55,7 +55,7 @@ const Instructions = ({ close }) => {
         <Italics>green white</Italics> ) and hit ENTER.
       </InstructionsText>
       <InstructionsText>
-        If your answer is corrent, you will advance to the next round. Complete
+        If your answer is correct, you will advance to the next round. Complete
         the selected number of rounds to win.
       </InstructionsText>
       <InstructionCol border>

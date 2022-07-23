@@ -108,6 +108,7 @@ export const samplePuzzlePieces = [
 export const playclock = () => {
   const clock = new Audio();
   clock.src = "/clock.mp3";
+  clock.loop = true;
   clock.volume = 0.5;
   return clock;
 };
